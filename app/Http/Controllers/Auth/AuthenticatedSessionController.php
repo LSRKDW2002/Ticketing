@@ -24,16 +24,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-            $request->authenticate();
-            $request->session()->regenerate();
+        $request->authenticate();
+        $request->session()->regenerate();
 
-            // Redirect based on user role
-            $user = Auth::user();
-            if ($user->role === 'admin') {
-                    return redirect()->intended('/admin');
-            } else {
-                    return redirect()->intended('/');
-            }
+        // 🔥 HAPUS intended Breeze
+        $request->session()->forget('url.intended');
+
+        $user = Auth::user();
+
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+
+        return redirect()->route('buyer.events.index');
     }
 
     /**
@@ -47,6 +50,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }
