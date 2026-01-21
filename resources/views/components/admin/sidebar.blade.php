@@ -73,6 +73,18 @@
                 </a>
             </li>
 
+            {{-- PAYMENT TYPE (NEW) --}}
+            <li>
+                <a href="{{ route('admin.payment-types.index') }}"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl
+                  {{ request()->routeIs('admin.payment-types.*') ? 'bg-primary text-white' : 'hover:bg-base-200' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path fill="none" stroke="currentColor" stroke-width="2" d="M3 7h18v10H3zM3 11h18M7 15h2" />
+                    </svg>
+                    <span class="font-medium">Tipe Pembayaran</span>
+                </a>
+            </li>
+
             {{-- HISTORY --}}
             <li>
                 <a href="{{ route('admin.histories.index') }}"
