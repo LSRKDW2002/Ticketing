@@ -107,6 +107,7 @@
                                         <input type="number" name="tickets[{{ $index }}][qty]" min="0"
                                             max="{{ $ticket->stok }}" value="0"
                                             class="w-24 rounded-xl
+                                            text-black
                                                border-slate-300
                                                text-center
                                                focus:ring-violet-500
